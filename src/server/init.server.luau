@@ -1,1 +1,20 @@
-print("Hello world, from server!")
+local Players = game.Players
+
+function PlayerJoined(Player)
+	local function RemoveMeshes(Character)
+		local Humanoid = Character:WaitForChild("Humanoid")
+		wait()
+		local CurrentDescription = Humanoid:GetAppliedDescription()
+
+		CurrentDescription.Head = 0
+		CurrentDescription.Torso = 0
+		CurrentDescription.LeftArm = 0
+		CurrentDescription.RightArm = 0
+		CurrentDescription.LeftLeg = 0
+		CurrentDescription.RightLeg = 0
+		Humanoid:ApplyDescription(CurrentDescription)
+	end
+	Player.CharacterAdded:Connect(RemoveMeshes)
+end
+
+Players.PlayerAdded:Connect(PlayerJoined)
