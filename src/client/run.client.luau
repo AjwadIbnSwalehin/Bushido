@@ -3,7 +3,6 @@ local char = plr.Character or plr.CharacterAdded:Wait()
 local humanoid = char:WaitForChild("Humanoid")
 local UIS = game:GetService("UserInputService")
 
--- load your non-sword run animation
 local runNoSword = humanoid:LoadAnimation(game.StarterPlayer.StarterCharacterScripts.Animate.run.RunAnim)
 local walkNoSword = humanoid:LoadAnimation(game.StarterPlayer.StarterCharacterScripts.Animate.walk.WalkAnim)
 local idleNoSword = humanoid:LoadAnimation(game.StarterPlayer.StarterCharacterScripts.Animate.idle.Animation1)
@@ -27,7 +26,6 @@ UIS.InputEnded:Connect(function(input)
 end)
 
 game:GetService("RunService").RenderStepped:Connect(function()
-	-- only run this if katana is NOT equipped
 	local tool = char:FindFirstChildOfClass("Tool")
 	if tool and tool.Name == "Katana" then
 		return
